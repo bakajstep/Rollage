@@ -14,7 +14,7 @@ export default defineConfig({
     },
 
     manifest: {
-      name: 'rollage',
+      name: 'PicRol',
       short_name: 'PicRol',
       description: 'Application for creating picture rollage',
       display: 'standalone',
