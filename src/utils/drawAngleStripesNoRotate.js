@@ -8,6 +8,9 @@ export default function drawAngleStripesNoRotate(
     const angleRad = (Math.PI / 180) * angleDeg
     const tanA = Math.tan(angleRad)
 
+    // Zkus velmi velký offset
+    const offset = 2 * Math.max(width, height)
+
     for (let i = 0; i < angleStripCount; i++) {
         ctx.save()
         ctx.beginPath()
@@ -15,14 +18,13 @@ export default function drawAngleStripesNoRotate(
         const y1 = i * stripThickness
         const y2 = (i + 1) * stripThickness
 
-        // Popis "šikmého" obdélníku (paralelogramu)
-        ctx.moveTo(0, y1)
-        ctx.lineTo(width, y1 + width * tanA)
-        ctx.lineTo(width, y2 + width * tanA)
-        ctx.lineTo(0, y2)
+        ctx.moveTo(-offset, y1 + (-offset) * tanA)
+        ctx.lineTo(width + offset, y1 + (width + offset) * tanA)
+        ctx.lineTo(width + offset, y2 + (width + offset) * tanA)
+        ctx.lineTo(-offset, y2 + (-offset) * tanA)
         ctx.closePath()
 
-        ctx.clip()
+        ctx.stroke()
 
         const sourceImage = i % 2 === 0 ? image1 : image2
         ctx.drawImage(sourceImage, 0, 0, width, height)

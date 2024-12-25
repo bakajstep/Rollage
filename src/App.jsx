@@ -19,18 +19,15 @@ import AngleStripesControls from './components/AngleStripesControls'
 import SquaresControls from './components/SquaresControls'
 import SwirlControls from './components/SwirlControls'
 import WaveStripesControls from './components/WaveStripesControls'
-import RadialFadeControls from './components/RadialFadeControls'
 import ResultCard from './components/ResultCard'
 
 // Import kreslících funkcí
 import {
   drawBasicStripes,
-  drawAngleStripes,
   drawAngleStripesNoRotate,
   drawSquares,
   drawSwirl,
   drawWaveStripes,
-  drawRadialFade
 } from './utils'
 
 function App() {
@@ -64,9 +61,6 @@ function App() {
   // WAVE
   const [waveCount, setWaveCount] = useState(5)
   const [waveAmplitude, setWaveAmplitude] = useState(40)
-
-  // RADIAL FADE
-  const [fadeRadiusPct, setFadeRadiusPct] = useState(50)
 
   // Výsledek
   const [result, setResult] = useState(null)
@@ -116,14 +110,6 @@ function App() {
           stripSizeCm
         })
         break
-      case 'angle-stripes':
-        drawAngleStripes(ctx, width, height, {
-          image1,
-          image2,
-          angleDeg,
-          angleStripCount
-        })
-        break
       case 'angle-stripes-no-rotate':
         drawAngleStripesNoRotate(ctx, width, height, {
           image1,
@@ -140,9 +126,6 @@ function App() {
         break
       case 'wave-stripes':
         drawWaveStripes(ctx, width, height, { image1, image2, waveCount, waveAmplitude })
-        break
-      case 'radial-fade':
-        drawRadialFade(ctx, width, height, { image1, image2, fadeRadiusPct })
         break
       default:
         drawBasicStripes(ctx, width, height, {
@@ -176,8 +159,7 @@ function App() {
         <Container maxWidth="md" sx={{ mt: 4 }}>
           <Typography paragraph>
             Nahraj dva obrázky a vyber režim sloučení. Obrázek 1 a 2 se budou
-            různě střídat nebo prolínat. Kód je jen ukázka, co všechno jde s
-            canvasem dělat.
+            různě střídat nebo prolínat.
           </Typography>
 
           {/* Grid pro nahrání obrázků */}
@@ -248,7 +230,7 @@ function App() {
             )}
 
             {/* Parametry pro ANGLE STRIPES (+ no-rotate) */}
-            {(drawMode === 'angle-stripes' || drawMode === 'angle-stripes-no-rotate') && (
+            {(drawMode === 'angle-stripes-no-rotate') && (
                 <AngleStripesControls
                     angleDeg={angleDeg}
                     setAngleDeg={setAngleDeg}
@@ -279,14 +261,6 @@ function App() {
                     setWaveCount={setWaveCount}
                     waveAmplitude={waveAmplitude}
                     setWaveAmplitude={setWaveAmplitude}
-                />
-            )}
-
-            {/* Parametry pro RADIAL FADE */}
-            {drawMode === 'radial-fade' && (
-                <RadialFadeControls
-                    fadeRadiusPct={fadeRadiusPct}
-                    setFadeRadiusPct={setFadeRadiusPct}
                 />
             )}
           </Box>
