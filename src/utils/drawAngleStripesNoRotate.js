@@ -24,7 +24,7 @@ export default function drawAngleStripesNoRotate(
         ctx.lineTo(-offset, y2 + (-offset) * tanA)
         ctx.closePath()
 
-        ctx.stroke()
+        ctx.clip()
 
         const sourceImage = i % 2 === 0 ? image1 : image2
         ctx.drawImage(sourceImage, 0, 0, width, height)

@@ -15,7 +15,7 @@ import Header from './components/Header'
 import ImageUploader from './components/ImageUploader'
 import DrawModeSelector from './components/DrawModeSelector'
 import BasicStripesControls from './components/BasicStripesControls'
-import AngleStripesControls from './components/AngleStripesControls'
+// import AngleStripesControls from './components/AngleStripesControls'
 import SquaresControls from './components/SquaresControls'
 import SwirlControls from './components/SwirlControls'
 import WaveStripesControls from './components/WaveStripesControls'
@@ -24,7 +24,7 @@ import ResultCard from './components/ResultCard'
 // Import kreslících funkcí
 import {
   drawBasicStripes,
-  drawAngleStripesNoRotate,
+  // drawAngleStripesNoRotate,
   drawSquares,
   drawSwirl,
   drawWaveStripes,
@@ -48,8 +48,8 @@ function App() {
   const [stripSizeCm, setStripSizeCm] = useState(1)
 
   // ANGLE STRIPES
-  const [angleDeg, setAngleDeg] = useState(45)
-  const [angleStripCount, setAngleStripCount] = useState(5)
+  // const [angleDeg, setAngleDeg] = useState(45)
+  // const [angleStripCount, setAngleStripCount] = useState(5)
 
   // SQUARES
   const [nHoriz, setNHoriz] = useState(5)
@@ -110,14 +110,14 @@ function App() {
           stripSizeCm
         })
         break
-      case 'angle-stripes-no-rotate':
-        drawAngleStripesNoRotate(ctx, width, height, {
-          image1,
-          image2,
-          angleDeg,
-          angleStripCount
-        })
-        break
+      // case 'angle-stripes-no-rotate':
+      //   drawAngleStripesNoRotate(ctx, width, height, {
+      //     image1,
+      //     image2,
+      //     angleDeg,
+      //     angleStripCount
+      //   })
+      //   break
       case 'squares':
         drawSquares(ctx, width, height, { image1, image2, nHoriz, nVert })
         break
@@ -229,15 +229,15 @@ function App() {
                 />
             )}
 
-            {/* Parametry pro ANGLE STRIPES (+ no-rotate) */}
-            {(drawMode === 'angle-stripes-no-rotate') && (
-                <AngleStripesControls
-                    angleDeg={angleDeg}
-                    setAngleDeg={setAngleDeg}
-                    angleStripCount={angleStripCount}
-                    setAngleStripCount={setAngleStripCount}
-                />
-            )}
+            {/*/!* Parametry pro ANGLE STRIPES (+ no-rotate) *!/*/}
+            {/*{(drawMode === 'angle-stripes-no-rotate') && (*/}
+            {/*    <AngleStripesControls*/}
+            {/*        angleDeg={angleDeg}*/}
+            {/*        setAngleDeg={setAngleDeg}*/}
+            {/*        angleStripCount={angleStripCount}*/}
+            {/*        setAngleStripCount={setAngleStripCount}*/}
+            {/*    />*/}
+            {/*)}*/}
 
             {/* Parametry pro SQUARES */}
             {drawMode === 'squares' && (

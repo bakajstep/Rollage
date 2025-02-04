@@ -11,7 +11,7 @@ export default function DrawModeSelector({ drawMode, setDrawMode }) {
                 onChange={(e) => setDrawMode(e.target.value)}
             >
                 <MenuItem value="basic-stripes">Pruhy (Horiz/Vert)</MenuItem>
-                <MenuItem value="angle-stripes-no-rotate">Šikmé pruhy</MenuItem>
+                {/*<MenuItem value="angle-stripes-no-rotate">Šikmé pruhy</MenuItem>*/}
                 <MenuItem value="squares">Kostičky</MenuItem>
                 <MenuItem value="swirl">Rotační klíny (Swirl)</MenuItem>
                 <MenuItem value="wave-stripes">Vlnité pruhy (Wave)</MenuItem>
